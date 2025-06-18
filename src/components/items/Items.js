@@ -7,14 +7,14 @@ import React, {
 } from "react";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { TfiLock } from "react-icons/tfi";
-import { useFetch } from "../../hooks/useApiRequest";
+import { useApiRequest } from "../../hooks/useApiRequest";
 import urls from "../../services/apiUrls";
 import { Hint } from "../hint/Hint";
 import "./items.css";
 import { DashboardContext } from "../../pages/dashboard/Dashboard";
 
 export const Items = ({ currentItems }) => {
-  const { fetchData } = useFetch();
+  const { fetchData } = useApiRequest();
   const { isCorrectAnswer, setIsCorrectAnswer, userLevel, setUserLevel } =
     useContext(DashboardContext);
   const answerCache = useRef({});

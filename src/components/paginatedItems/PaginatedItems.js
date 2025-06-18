@@ -8,13 +8,13 @@ import React, {
 import ReactPaginate from "react-paginate";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { Items } from "../items/Items";
-import { useFetch } from "../../hooks/useApiRequest";
+import { useApiRequest } from "../../hooks/useApiRequest";
 import urls from "../../services/apiUrls";
 import "./paginatedItems.css";
 import { DashboardContext } from "../../pages/dashboard/Dashboard";
 
 export const PaginatedItems = () => {
-  const { fetchData, loading, error } = useFetch();
+  const { fetchData, loading, error } = useApiRequest();
   const { userLevel } = useContext(DashboardContext);
   const [riddles, setRiddles] = useState([]);
   const [totalRiddles, setTotalRiddles] = useState(0);
