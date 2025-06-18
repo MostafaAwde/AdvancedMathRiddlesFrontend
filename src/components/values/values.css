@@ -1,0 +1,120 @@
+.values {
+	padding-bottom: var(--main-padding-bottom);
+	padding-top: var(--main-padding-top);
+	margin: 0 auto;
+	box-shadow: 0 0 10px var(--main-color-alt);
+	background: linear-gradient(109.6deg, rgba(0, 0, 0, 0.93) 11.2%, rgb(16 16 16) 78.9%);
+}
+
+.values-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  margin-top: 60px;
+}
+
+@media(max-width: 835px) {
+	.values-container {
+		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	}
+}
+
+.card-title {
+	color: var(--main-title-color);
+	font-size: 1.5em;
+	line-height: normal;
+	font-weight: 700;
+	margin-bottom: 1em;
+}
+
+.small-desc {
+	font-size: 1em;
+	font-weight: 400;
+	line-height: 1.5em;
+	color: var(--main-color-alt);
+}
+
+.small-desc {
+	font-size: 1em;
+}
+
+.card {
+	display: block;
+	position: relative;
+	max-width: 300px;
+	max-height: 320px;
+	background-color: #101010;
+	border-radius: 10px;
+	padding: 2em 1.2em;
+	margin: 12px;
+	text-decoration: none;
+	z-index: 0;
+	overflow: hidden;
+  transition: var(--main-transition) ease-in-out;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.card:before {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	top: -24px;
+	right: -14px;
+	height: 32px;
+	width: 116%;
+	border-radius: 32px;
+	transform: scale(1);
+	transform-origin: 50% 50%;
+	transition: 0.35s ease-in-out;
+}
+
+.card-1:before {
+  background-color: #f9b234;
+}
+
+.card-2:before {
+  background-color: #3ecd5e;
+}
+
+.card-3:before {
+  background-color: #e44002;
+}
+
+.card-4:before {
+  background-color: #952aff;
+}
+
+.card-5:before {
+  background-color: #cd3e94;
+}
+
+.card-6:before {
+  background-color: #4c49ea;
+}
+
+.card:hover:before {
+  transition: var(--main-transition) ease-in-out;
+	transform: scale(1.1);
+  height: 120%;
+}
+
+
+.card:hover .small-desc {
+	transition: all 0.5s ease-in-out;
+	color: white;
+}
+
+.card:hover .card-title {
+	transition: all 0.5s ease-in-out;
+	color: white;
+}
+
+@media (max-width: 450px) {
+	.values-container {
+		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	}
+	.card-title {
+		font-size: 1.3em;
+	}
+}

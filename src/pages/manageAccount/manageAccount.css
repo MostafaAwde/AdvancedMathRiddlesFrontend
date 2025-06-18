@@ -1,0 +1,212 @@
+.manageAccount {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  background: linear-gradient(135deg, #1a1a2e, #0f0f1a, #1a1a2e);
+}
+
+.backToDashboardButton {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  margin-bottom: 10px;
+  padding: 10px;
+  background: transparent;
+  color: var(--main-color-alt);
+  border: none;
+  border-radius: 5px;
+  margin: 15px 0;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.manageAccount .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 100px auto;
+  width: 370px;
+  height: fit-content;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #222;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+  font-size: 30px;
+  color: var(--main-color-alt);
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-family: "Playfair Display", serif;
+  text-align: center;
+}
+
+.actionButtons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.actionButtons button {
+  width: 200px;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: var(--main-color-alt);
+  color: #222;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  margin: 15px 0;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.actionButtons button:hover {
+  background-color: #ecb911cc;
+}
+
+.manageAccountForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  transition: opacity 0.3s ease, height 0.3s ease;
+}
+
+.manageAccountForm.visible {
+  opacity: 1;
+  align-items: center;
+  text-align: center;
+  height: auto;
+}
+
+.manageAccountForm.hidden {
+  opacity: 0;
+  height: 0;
+}
+
+
+.manageAccountForm input {
+  width: 300px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #444;
+  background: #333;
+  color: #f8f8cf;
+  margin-bottom: 20px;
+  font-size: 1em;
+  transition: border-color 0.3s;
+}
+
+.manageAccountForm input:focus {
+  border-color: var(--main-color-alt);
+  outline: none;
+}
+
+.manageAccountForm button {
+  width: 200px;
+  height: 40px;
+  color: #222;
+  background: orange;
+  font-size: 1em;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+
+.manageAccountForm h3 {
+  color: #f8f8cf;
+}
+
+.manageAccountForm button:hover {
+  background: #ecb911cc;
+}
+
+.responseMessage {
+  text-align: center;
+  font-weight: 500;
+  margin-top: 20px;
+}
+
+.successMessage {
+	color: rgb(20, 143, 20);
+  margin-top: 15px;
+}
+
+.errorMessage {
+	color: #d9534f;
+  margin-top: 15px;
+}
+
+@media(max-width: 460px) {
+  .manageAccount .container {
+    max-width: 300px;
+  }
+
+  .manageAccountForm input {
+    max-width: 250px;
+  }
+}
+
+/* Modal styling */
+.deleteModal {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  width: 300px; /* Adjusted width for better fit */
+  padding: 20px;
+  border-radius: 8px; /* Slightly increased border-radius */
+  background: #333; /* Dark background for the modal */
+  color: #fff; /* Light text color for contrast */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Slightly more intense shadow */
+  transform: translate(-50%, -50%);
+}
+
+.deleteModal h2 {
+  margin-top: 0;
+  font-size: 20px;
+  color: #ffcc00; /* Yellow color for the header */
+}
+
+.deleteModal p {
+  font-size: 16px;
+  color: #ddd; /* Light gray color for the text */
+}
+
+.deleteModal button {
+  background-color: #ff6600; /* Orange color for the buttons */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 15px;
+  margin: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.deleteModal button:hover {
+  background-color: #e55b00; /* Darker orange for hover effect */
+}
+
+.deleteModal button.cancel {
+  background-color: #444; /* Darker color for the cancel button */
+}
+
+.deleteModal button.cancel:hover {
+  background-color: #666; /* Darker color for hover effect */
+}
+
+/* Overlay styling */
+.deleteModalOverlay {
+  background: rgba(0, 0, 0, 0.6); /* Darker overlay for better contrast */
+}

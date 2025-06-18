@@ -1,0 +1,60 @@
+.hint-container {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	background-color: #444;
+	border-radius: 6px; /* Rounded corners */
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+	z-index: 10;
+	max-width: 300px; /* Limit the width */
+	gap: 10px; /* Space between icon, text, and image */
+}
+
+.hint-content {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+
+.hintText {
+	color: #f0f0f0; /* Softer white color */
+	font-size: 18px; /* Larger text */
+	margin: 0 absolute;
+	margin-bottom: 10px; /* Space below text */
+	line-height: 1.4; /* Improved line height */
+}
+
+.hintText.show {
+	display: block;
+	margin-left: 6px;
+}
+
+.hintText.hide {
+	display: none;
+}
+
+.hintIcon-container {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+
+.hintIcon {
+	font-size: 36px; /* Larger icon */
+	color: #ffd700; /* Bright color */
+	cursor: pointer;
+	z-index: 15;
+	transition: color 0.3s, transform 0.3s; /* Transition effects */
+}
+
+.hintIcon:hover {
+	color: #fff700; /* Color on hover */
+	transform: scale(1.1); /* Slight scale effect */
+}
+
+.no-hint-image {
+	width: 34px;
+    height: 40px;
+    margin-left: 6px;
+}

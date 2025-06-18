@@ -1,0 +1,150 @@
+/* Pagination Container - UNCHANGED */
+.paginationContainer {
+	display: flex;
+	flex-wrap: wrap;
+	z-index: 4;
+	justify-content: space-evenly;
+	width: 100%;
+}
+
+/* NEW: Pagination Wrapper */
+.paginationWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+/* Pagination List - ENHANCED */
+.paginationContainer ul {
+	width: 100%;
+	margin: auto;
+	margin-top: 50px;
+	font-size: 20px;
+	gap: 10px;
+	padding: 0;
+	display: flex;
+	color: var(--main-color-alt);
+	align-items: center;
+	justify-content: center;
+}
+
+/* Pagination Links - ENHANCED */
+.paginationContainer a {
+	text-decoration: none;
+	cursor: pointer;
+	height: 100%;
+	padding: 0 9px;
+	transition: all 0.2s ease;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.paginationContainer li.previous a,
+.paginationContainer li.next a {
+	padding: 0 5px;
+}
+
+/* Pagination Items - ENHANCED */
+.paginationContainer li {
+	border: 1px solid var(--main-color-alt);
+	border-radius: 50%;
+	height: 36px;
+	width: 36px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	list-style: none;
+	transition: all 0.2s ease;
+}
+
+.paginationContainer li:hover {
+	background-color: rgba(255, 255, 0, 0.2);
+	transform: scale(1.1);
+}
+
+.paginationContainer li svg {
+	margin-right: 0.5px;
+	margin-top: 0;
+	padding: 0;
+}
+
+.paginationContainer li svg.leftArrow {
+	transition: transform 0.2s ease;
+}
+
+.paginationContainer li svg.rightArrow {
+	transition: transform 0.2s ease;
+}
+
+.paginationContainer li:hover svg {
+	transform: scale(1.1);
+}
+
+/* Active State - ENHANCED */
+.paginationContainer .active {
+	background-color: yellow;
+	color: black;
+	border: 1px solid yellow;
+	font-weight: 600;
+	transform: scale(1.1);
+	box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.paginationContainer .active a {
+	color: black;
+}
+
+/* Break Label - NEW */
+.paginationContainer .break {
+	border: none;
+	cursor: default;
+	background: transparent;
+}
+
+/* Disabled State - NEW */
+.paginationContainer .disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+.paginationContainer .disabled a {
+	cursor: not-allowed;
+}
+
+/* Page Status - NEW */
+.page-status {
+  color: var(--main-color-alt);
+  font-size: 0.9rem;
+  margin-top: 15px;
+}
+
+/* Responsive - NEW */
+@media (max-width: 768px) {
+	.paginationContainer ul {
+		gap: 6px;
+		font-size: 18px;
+	}
+	
+	.paginationContainer li {
+		height: 32px;
+		width: 32px;
+	}
+
+  .page-status {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .paginationWrapper {
+    margin-top: 1rem;
+  }
+  
+  .paginationContainer ul {
+    margin-top: 30px;
+    flex-wrap: wrap;
+  }
+}

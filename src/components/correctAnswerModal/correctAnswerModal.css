@@ -1,0 +1,57 @@
+.modal {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+	z-index: 1000;
+	opacity: 0;
+	transition: opacity 0.3s ease-in-out;
+	pointer-events: none; /* Disable pointer events when not visible */
+}
+
+.modal.visible {
+	opacity: 1;
+	pointer-events: auto; /* Enable pointer events when visible */
+}
+
+.modal-content {
+	background: #4caf50; /* Green background color */
+	color: #fff; /* White text color */
+	padding: 20px;
+	border-radius: 10px;
+	text-align: center;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.overlay {
+	background-color: #272622;
+	box-shadow: 0 0 6px var(--main-color-alt);
+	width: 300px;
+	height: 342px;
+	border-radius: 10px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	justify-content: space-around;
+	transition: background 0.3s ease-in-out;
+	overflow: hidden;
+	margin: 10px;
+}
+
+.overlay p {
+	font-size: 85px;
+}
+
+.overlay:hover {
+	cursor: pointer;
+	background-color: #3d3b36; /* Change to the desired flash color */
+}
+
+.removeOverlay {
+	display: none;
+}

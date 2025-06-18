@@ -1,0 +1,401 @@
+.dashboard {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	color: #ececec;
+	position: relative;
+	overflow: hidden;
+}
+
+.dashboard::before {
+	content: ""; /* Required to generate a pseudo-element */
+	position: absolute; /* Position it absolutely within the container */
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url("../../assets/home3.png"); /* Path to your background image */
+	background-size: repeat; /* Cover the container with the image */
+	background-position: center; /* Center the image */
+	opacity: 0.2; /* Set the opacity of the background image */
+	z-index: -1; /* Position it behind the actual content */
+}
+
+.username {
+	font-size: 20px;
+	color: var(--main-title-color);
+	margin: 0;
+	padding-left: 20px;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.navbar {
+	background-color: var(--main-color);
+	box-shadow: 0 0 10px var(--main-color-alt);
+	top: 0;
+	width: 100%;
+	height: 70px;
+	z-index: 9;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.navbar .container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	width: 100%;
+	height: 100%;
+}
+
+.navbar .main-nav {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	margin: 0;
+	list-style: none;
+	z-index: 10;
+	padding: 0;
+}
+
+.navbar .main-nav li {
+	height: 100%;
+}
+
+.navbar .main-nav li a {
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	text-decoration: none;
+	color: var(--main-title-color);
+	align-items: center;
+	height: 100%;
+	font-size: 18px;
+	position: relative;
+	padding: 0 30px;
+	transition: 0.3s;
+	overflow: hidden;
+}
+
+@media (max-width: 950px) {
+	.navbar .main-nav {
+		position: relative;
+		height: fit-content;
+	}
+
+	.navbar .main-nav li {
+		width: 100%;
+		height: 100%;
+	}
+
+	.navbar .main-nav li a {
+		font-size: 18px;
+		height: 100%;
+		padding: 15px 0;
+		width: 100%;
+	}
+}
+
+.navbar .main-nav li a:hover {
+	color: var(--main-color-alt);
+	background-color: #555555;
+}
+
+.toggleButtonLogin svg {
+	font-size: 25px;
+	color: white;
+	transition: var(--main-transition);
+}
+
+.toggleButtonLogin svg:hover {
+	color: var(--main-color-alt);
+}
+
+.toggleButtonLogin button {
+	margin-right: 20px;
+	background-color: transparent;
+	border: none;
+	color: black;
+	cursor: pointer;
+}
+
+@media (min-width: 951px) {
+	.navbar .toggleButtonLogin {
+		display: none;
+	}
+	.navbar .main-nav li a::before {
+		content: "";
+		position: absolute;
+		width: 100%;
+		height: 0px;
+		background-color: var(--main-color-alt);
+		transition: var(--main-transition);
+		top: 0;
+		left: -100%;
+	}
+	.navbar .main-nav li a:hover:before {
+		left: 0;
+		height: 2px;
+	}
+}
+
+@media (max-width: 950px) {
+	.navbar .main-nav {
+		display: none;
+	}
+	.toggleButtonLogin button {
+		margin: 0;
+	}
+}
+
+@media (max-width: 991px) {
+	.navbar .container {
+		flex-wrap: nowrap;
+	}
+	.navbar .container .main-nav a {
+		width: fit-content;
+	}
+}
+
+#open .navbar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+}
+
+#open .navbar .main-nav {
+	display: flex;
+	flex-direction: column;
+	background-color: var(--main-color);
+	position: absolute;
+	top: 70px; /* Adjust based on navbar height */
+	left: 0;
+	width: 100%;
+	max-height: calc(100vh - 70px); /* Prevent overflow beyond the viewport */
+}
+
+#open .navbar .main-nav li a {
+	padding: 15px 0;
+	text-align: center;
+	width: 100%;
+}
+
+
+#open .main-nav li a::after {
+	content: "";
+	position: absolute;
+	width: 100%;
+	z-index: 100;
+	height: 0px;
+	background-color: var(--main-color-alt);
+	transition: var(--main-transition);
+	bottom: 0;
+	z-index: 2;
+	left: -100%;
+}
+
+#open .main-nav li a:hover:after {
+	height: 2px;
+	left: 0;
+}
+
+#open .navbar .title {
+	display: none;
+}
+
+#open .navbar .toggleButtonLogin {
+	width: 50%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+@media (max-width: 450px) {
+	.navbar .container .title {
+		font-size: 25px;
+	}
+	#open .main-nav li a {
+		font-size: 17px;
+	}
+}
+
+.navbar .main-nav li:nth-of-type(2) {
+	position: relative;
+}
+
+.top-players-overlay {
+	position: absolute;
+	top: 73px;
+	left: -156px;
+	width: 300px;
+	height: fit-content;
+	border-radius: 5px;
+	background: rgba(0, 0, 0, 0.8);
+	display: flex;
+	justify-content: center;
+	z-index: 3;
+	align-items: center;
+	transition: visibility 0s, opacity 0.5s;
+	overflow: hidden;
+	box-shadow: 0px 0px 10px var(--main-color-alt);
+}
+
+.top-players-overlay.show {
+	visibility: visible;
+	opacity: 1;
+}
+
+.loader {
+	border: 10px solid #f3f3f3;
+	border-top: 10px solid var(--main-color-alt);
+	border-radius: 50%;
+	width: 20px;
+	height: 20px;
+	animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.topPlayersBox {
+	background-color: #1a1a1a;
+	padding: 20px;
+	border-radius: 6px;
+	color: #ececec;
+	height: 100%;
+	width: 100%;
+}
+
+.topPlayersBox h1 {
+	margin-bottom: 20px;
+	font-size: 24px;
+}
+
+.topPlayersBox ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.topPlayersBox li {
+	font-size: 18px;
+	margin: 10px 0 0 0;
+	display: flex;
+	flex-wrap: wrap;
+	padding: 0 0 5px;
+	position: relative;
+}
+
+.topPlayersBox li:not(:last-child) {
+	border-bottom: 1px solid #777;
+}
+
+.topPlayersBox li.crown::before {
+	content: "👑";
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+#open .top-players-overlay {
+	position: static;
+	width: 100%;
+}
+
+.dashboard .content {
+	display: flex;
+	justify-content: space-between;
+	padding: 0 15px;
+	padding-bottom: 50px;
+	flex-direction: column;
+  background: linear-gradient(109.6deg, rgba(0, 0, 0, 0.4) 11.2%, rgba(16, 16, 16, 0.4) 78.9%);
+}
+
+.dashboard .content .topPlayersBox {
+	width: 100%;
+	margin: 30px 0;
+	height: 120px;
+}
+
+.dashboard .content .topPlayers {
+	background-color: #1a1a1a; /* Dark background */
+	border: 1px solid #333;
+	border-radius: 6px;
+	color: #ececec;
+	padding: 15px;
+	line-height: 2;
+	overflow-y: auto; /* Enable scrolling if there are more players */
+}
+
+.dashboard .topPlayersBox h1 {
+	font-size: 20px;
+	margin-bottom: 15px;
+	text-align: center;
+	color: #ececec;
+}
+
+.dashboard .content .topPlayersBox .topPlayers ul {
+	margin: 0;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 0;
+	overflow-x: auto;
+}
+
+.dashboard .content .topPlayersBox .topPlayers li {
+	list-style: none;
+	font-size: 16px;
+	padding-right: 10px;
+	border-right: 1px solid #ececec;
+}
+
+.dashboard .content .topPlayersBox .topPlayers li:last-child {
+	border-right: none; /* Remove border for the last player */
+}
+
+/* Style for the arrow */
+.arrow {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.arrow svg {
+  width: 20px;
+  height: 20px;
+  color: #000;
+}
+
+@media (max-width: 950px) {
+  .arrow {
+    display: flex;
+  }
+}
+
+.grepatcha-badge, .grecaptcha-error {
+	display: none !important;
+}
