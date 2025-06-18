@@ -14,7 +14,7 @@ import "./paginatedItems.css";
 import { DashboardContext } from "../../pages/dashboard/Dashboard";
 
 export const PaginatedItems = () => {
-  const { fetchData, loading, error } = useApiRequest();
+  const { sendRequest, loading, error } = useApiRequest();
   const { userLevel } = useContext(DashboardContext);
   const [riddles, setRiddles] = useState([]);
   const [totalRiddles, setTotalRiddles] = useState(0);
@@ -28,7 +28,7 @@ export const PaginatedItems = () => {
       const token = localStorage.getItem("token");
       if (!token) return;
       console.log(userLevel);
-      const response = await fetchData(urls.riddles.get, {}, true);
+      const response = await sendRequest(urls.riddles.get, {}, true);
       if (response?.data) {
         const { riddles, totalRiddles } = response.data;
         const updatedRiddles = riddles.map((riddle) => ({
@@ -40,7 +40,7 @@ export const PaginatedItems = () => {
       }
     };
     fetchRiddles();
-  }, [userLevel, fetchData]);
+  }, [userLevel, sendRequest]);
 
   const handlePageClick = useCallback(({ selected }) => {
     setCurrentPage(selected);

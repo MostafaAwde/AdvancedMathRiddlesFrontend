@@ -14,7 +14,7 @@ import "./items.css";
 import { DashboardContext } from "../../pages/dashboard/Dashboard";
 
 export const Items = ({ currentItems }) => {
-  const { fetchData } = useApiRequest();
+  const { sendRequest } = useApiRequest();
   const { isCorrectAnswer, setIsCorrectAnswer, userLevel, setUserLevel } =
     useContext(DashboardContext);
   const answerCache = useRef({});
@@ -102,7 +102,7 @@ export const Items = ({ currentItems }) => {
           userAnswer: userAnswer,
           riddleLevel: parseInt(level),
         };
-        const response = await fetchData(
+        const response = await sendRequest(
           urls.riddles.checkAnswer,
           sendData,
           true
@@ -115,7 +115,7 @@ export const Items = ({ currentItems }) => {
         playSound("wrong-answer.mp3");
       }
     },
-    [fetchData, currentPage, setIsCorrectAnswer, userLevel, setUserLevel]
+    [sendRequest, currentPage, setIsCorrectAnswer, userLevel, setUserLevel]
   );
 
   useEffect(() => {

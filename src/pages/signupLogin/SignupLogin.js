@@ -172,7 +172,7 @@ export const SignupLogin = () => {
       emailUsername: loginData.emailUsername,
       password: loginData.password,
     };
-    const response = await sendData(urls.signupLogin.get, sendData, false, "GET");
+    const response = await sendRequest(urls.signupLogin.get, sendData, false, "GET");
     if (response.data.authorized) {
       // Clean up reCAPTCHA before navigation
       cleanUpRecaptcha();
