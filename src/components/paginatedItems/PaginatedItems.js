@@ -28,7 +28,7 @@ export const PaginatedItems = () => {
       const token = localStorage.getItem("token");
       if (!token) return;
       console.log(userLevel);
-      const response = await sendRequest(urls.riddles.get, {}, true);
+      const response = await sendRequest(urls.riddles.get, {}, true, "get");
       if (response?.data) {
         const { riddles, totalRiddles } = response.data;
         const updatedRiddles = riddles.map((riddle) => ({

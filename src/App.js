@@ -31,23 +31,29 @@ function App() {
   useEffect(() => {
     const validateToken = async () => {
       const token = localStorage.getItem("token");
-      if (token) {
-        const response = await sendRequest(
-          urls.app.validateToken,
-          {},
-          true,
-          "GET"
-        );
-        if (response.data.authorized) {
+      if (!token) {
+        setIsAuthenticated(false);
+        return;
+      }
+
+      try {
+        const response = await sendRequest(urls.app.validateToken, {}, true, "GET");
+        if (response?.data?.valid === true) {
           setIsAuthenticated(true);
         } else {
-          setIsAuthenticated(false);
           localStorage.clear();
+          setIsAuthenticated(false);
         }
+      } catch (err) {
+        console.error("Token validation failed", err);
+        localStorage.clear();
+        setIsAuthenticated(false);
+      } finally {
       }
     };
+
     validateToken();
-  }, []);
+  }, [sendRequest, setIsAuthenticated]);
 
   const ConditionalNavbar = () => {
     const location = useLocation();

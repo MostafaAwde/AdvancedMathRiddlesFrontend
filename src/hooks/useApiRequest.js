@@ -4,7 +4,6 @@ import { AuthContext } from "../context/AuthProvider";
 import config from "../config/config";
 
 export const useApiRequest = () => {
-  const { setIsAuthenticated } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
 
   const sendRequest = useCallback(
@@ -26,7 +25,6 @@ export const useApiRequest = () => {
           headers,
         };
 
-        // Add data or params depending on the method
         if (["post", "put", "patch", "delete"].includes(method.toLowerCase())) {
           options.data = requestData;
         } else if (method.toLowerCase() === "get") {
@@ -34,13 +32,6 @@ export const useApiRequest = () => {
         }
 
         const response = await axios(options);
-
-        // Handle unauthorized case
-        if (checkToken && response.status === 200 && response.data.authorized === false) {
-          localStorage.clear();
-          setIsAuthenticated(false);
-        }
-
         return response;
       } catch (err) {
         throw err;
@@ -48,7 +39,7 @@ export const useApiRequest = () => {
         setLoading(false);
       }
     },
-    [setIsAuthenticated]
+    []
   );
 
   return { sendRequest, loading };
