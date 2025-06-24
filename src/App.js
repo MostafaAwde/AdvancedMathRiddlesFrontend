@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -24,8 +24,9 @@ import urls from "./services/apiUrls";
 import { useApiRequest } from "./hooks/useApiRequest";
 
 function App() {
-  const { setIsAuthenticated, isAuthenticated, loading } =
+  const { setIsAuthenticated, isAuthenticated } =
     useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
   const { sendRequest } = useApiRequest();
 
   useEffect(() => {
@@ -37,6 +38,7 @@ function App() {
       }
 
       try {
+        setLoading(true);
         const response = await sendRequest(urls.app.validateToken, {}, true, "GET");
         if (response?.data?.valid === true) {
           setIsAuthenticated(true);
@@ -49,6 +51,7 @@ function App() {
         localStorage.clear();
         setIsAuthenticated(false);
       } finally {
+        setLoading(false);
       }
     };
 

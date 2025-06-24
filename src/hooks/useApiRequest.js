@@ -39,7 +39,7 @@ export const useApiRequest = () => {
         setLoading(false);
       }
     },
-    []
+    [setLoading]
   );
 
   return { sendRequest, loading };
