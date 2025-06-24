@@ -67,7 +67,7 @@ export const PaginatedItems = () => {
     return Object.values(items).slice(offset, offset + itemsPerPage);
   }, [items, currentPage, itemsPerPage]);
 
-  if (loading) return <div className="loading-spinner">Loading...</div>;
+  if (loading) return <div className="loading-spinner"></div>;
   if (error) return <div className="error-message">Error loading data</div>;
 
   return (

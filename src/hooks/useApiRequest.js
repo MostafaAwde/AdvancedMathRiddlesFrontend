@@ -1,10 +1,10 @@
-import { useContext, useState, useCallback } from "react";
+import { useContext, useCallback } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/AuthProvider";
 import config from "../config/config";
 
 export const useApiRequest = () => {
-  const [loading, setLoading] = useState(false);
+  const {loading, setLoading} = useContext(AuthContext);
 
   const sendRequest = useCallback(
     async (endpoint, requestData = {}, checkToken = false, method = "GET") => {
