@@ -40,9 +40,9 @@ export const PaginatedItems = () => {
         setRiddles(updatedRiddles);
         setTotalRiddles(totalRiddles);
       }
+      setLoading(false);
     };
     fetchRiddles();
-    setLoading(false);
   }, [userLevel, sendRequest]);
 
   const handlePageClick = useCallback(({ selected }) => {
