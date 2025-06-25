@@ -14,8 +14,9 @@ import "./paginatedItems.css";
 import { DashboardContext } from "../../pages/dashboard/Dashboard";
 
 export const PaginatedItems = () => {
-  const { sendRequest, loading, error } = useApiRequest();
+  const { sendRequest, error } = useApiRequest();
   const { userLevel } = useContext(DashboardContext);
+  const [loading, setLoading] = useState(false);
   const [riddles, setRiddles] = useState([]);
   const [totalRiddles, setTotalRiddles] = useState(0);
 
@@ -25,6 +26,7 @@ export const PaginatedItems = () => {
 
   useEffect(() => {
     const fetchRiddles = async () => {
+      setLoading(true);
       const token = localStorage.getItem("token");
       if (!token) return;
       console.log(userLevel);
@@ -40,6 +42,7 @@ export const PaginatedItems = () => {
       }
     };
     fetchRiddles();
+    setLoading(false);
   }, [userLevel, sendRequest]);
 
   const handlePageClick = useCallback(({ selected }) => {
