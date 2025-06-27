@@ -30,6 +30,14 @@ function App() {
   const { sendRequest } = useApiRequest();
 
   useEffect(() => {
+    if (isAuthenticated) {
+      document.body.classList.add("hide-recaptcha");
+    } else {
+      document.body.classList.remove("hide-recaptcha");
+    }
+  }, [isAuthenticated]);
+
+  useEffect(() => {
     const validateToken = async () => {
       const token = localStorage.getItem("token");
       if (!token) {

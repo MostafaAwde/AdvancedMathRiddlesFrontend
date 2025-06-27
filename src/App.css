@@ -47,3 +47,11 @@ html {
   align-items: center;
   height: 100vh; /* Full height to center spinner vertically */
 }
+
+body.hide-recaptcha .grecaptcha-badge {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  /* optionally add transition for smoothness */
+  transition: opacity 0.3s ease;
+}
