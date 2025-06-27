@@ -105,7 +105,8 @@ export const Items = ({ currentItems }) => {
         const response = await sendRequest(
           urls.riddles.checkAnswer,
           sendData,
-          true
+          true,
+          "POST"
         );
         answerCache.current[riddleKey] = { userAnswer, response };
         handleAnswerResponse(response, riddleKey, level);
